@@ -89,7 +89,7 @@ return sock.msg(data);
     var loadChat = function (cb) {
         if (!cb) cb = function () {
         };
-        $.getJSON("https://eklipztv.com/dj/langIndex.json&callback=?", function (json) {
+        $.get("https://rawgit.com/Eklipz/plugNull/master/lang/langIndex.json", function (json) {
             var link = basicBot.chatLink;
             if (json !== null && typeof json !== "undefined") {
                 langIndex = json;
@@ -232,7 +232,7 @@ return str;
         loggedInID: null,
         scriptLink: "https://eklipztv.com/dj/heart.js",
         cmdLink: "http://git.io/ve1L9",
-        chatLink: "https://eklipztv.com/dj/en.json",
+        chatLink: "https://rawgit.com/Eklipz/plugNull/master/lang/en.json",
         chat: null,
         loadChat: loadChat,
         retrieveSettings: retrieveSettings,
@@ -240,7 +240,7 @@ return str;
         settings: {
             botName: "basicBot",
             language: "english",
-            chatLink: "https://eklipztv.com/dj/en.json",
+            chatLink: "https://rawgit.com/Eklipz/plugNull/master/lang/en.json",
             scriptLink: "https://eklipztv.com/dj/heart.js",
             roomLock: false, // Requires an extension to re-load the script 
             startupCap: 1, // 1-200

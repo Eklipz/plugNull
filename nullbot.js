@@ -190,7 +190,7 @@ localStorage.setItem("basicBotsettings", JSON.stringify({
 
 botName: "basicBot",
 language: "english",
-chatLink: "https://eklipztv.com/dj/en.json",
+chatLink: "https://rawgit.com/Eklipz/plugNull/master/lang/en.json",
 scriptLink: "https://eklipztv.com/dj/heart.js",
 roomlock: false,
 startupCap: 1,
