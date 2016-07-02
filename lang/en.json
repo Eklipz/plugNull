@@ -463,18 +463,18 @@
 "eatcandy": "/me eats a candy.",
 "nousercandy": "/em doesn't see %%NAME%% in this room.",
 "selfcandy": "/me @%%NAME%%, Giving candies to yourself, How about giving other people candies :)",
-"candy": "/me [NullBot]: @%%NAMEFROM%% gives @%%NAMETO%%, %%CANDY%%!",
+"candy": "/me @%%NAMEFROM%% gives @%%NAMETO%%, %%CANDY%%!",
 
 
 "eatshots": "/me takes a shot.",
 "nousershots": "/em doesn't see %%NAME%% in this room.",
 "selfshots": "/me @%%NAME%%, Buying yourself a shot, How about you buy a round for once :)",
-"shot": "/me [NullBot]: @%%NAMEFROM%% buys @%%NAMETO%% a shot, %%SHOT%%!",
+"shot": "/me @%%NAMEFROM%% buys @%%NAMETO%% a shot, %%SHOT%%!",
 
 "eatk1tt": "/me takes a shot.",
 "nouserk1tt": "/em doesn't see %%NAME%% in this room.",
 "selfk1tt": "/me @%%NAMETO%%, You buy yourself a shot, %%K1TT%%",
-"k1tt": "/me [NullBot]: @%%NAMEFROM%% buys @%%NAMETO%% a shot, %%K1TT%%!",
+"k1tt": "/me @%%NAMEFROM%% buys @%%NAMETO%% a shot, %%K1TT%%!",
 
 "eatfortune": "/me ",
 "nouserfortune": "/em doesn't see %%NAME%% in this room.",
