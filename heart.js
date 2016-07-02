@@ -231,7 +231,7 @@ return str;
         name: "nullBot",
         loggedInID: null,
         scriptLink: "https://rawgit.com/Eklipz/plugNull/master/heart.js",
-        cmdLink: "http://git.io/ve1L9",
+        cmdLink: "https://git.io/vKvpm",
         chatLink: "https://rawgit.com/Eklipz/plugNull/master/lang/en.json",
         chat: null,
         loadChat: loadChat,
@@ -2551,11 +2551,11 @@ console.log(basicBot.room.name);
                         if (msg.length <= cmd.length + 1) return API.sendChat(subChat(basicBot.chat.currentlang, {language: basicBot.settings.language}));
                         var argument = msg.substring(cmd.length + 1);
 
-                        $.get("https://rawgit.com/Yemasthui/basicBot/master/lang/langIndex.json", function (json) {
+                        $.get("https://rawgit.com/Eklipz/plugNull/master/lang/langIndex.json", function (json) {
                             var langIndex = json;
                             var link = langIndex[argument.toLowerCase()];
                             if (typeof link === "undefined") {
-                                API.sendChat(subChat(basicBot.chat.langerror, {link: "http://git.io/vJ9nI"}));
+                                API.sendChat(subChat(basicBot.chat.langerror, {link: "https://git.io/vKvpZ"}));
                             }
                             else {
                                 basicBot.settings.language = argument;
