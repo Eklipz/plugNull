@@ -44,11 +44,11 @@ API.sendChat("!rules");
 1000 * 60 * 78);
 
 setInterval(function () {
-if(autoRules === true) {
-API.sendChat("!question");
+if(autoAppear === true) {
+API.sendChat("!discord");
 }
 },
-1000 * 60 * 109);
+1000 * 60 * 87);
 
 bot.commands.abuseCommand = {
 command: 'abuse',
