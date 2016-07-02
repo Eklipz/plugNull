@@ -1,15 +1,15 @@
 {
-    "english": "https://eklipztv.com/dj/en.json",
-    "portuguese": "https://eklipztv.com/dj/pt-BR.json",
-    "french": "https://eklipztv.com/dj/fr.json",
-    "turkish": "https://eklipztv.com/dj/tr.json",
-    "serbian": "https://eklipztv.com/dj/sr.json",
-    "chinese": "https://eklipztv.com/dj/zh-TW.json",
-    "dutch": "https://eklipztv.com/dj/nl.json",
-    "latvian": "https://eklipztv.com/dj/lv-LV.json",
-    "german": "https://eklipztv.com/dj/de.json",
-    "spanish": "https://eklipztv.com/dj/es-ES.json",
-    "czech": "https://eklipztv.com/dj/cs.json",
-    "malay": "https://eklipztv.com/dj/ms.json",
-    "polish": "https://eklipztv.com/dj/pl.json"
+    "english": "https://rawgit.com/Eklipz/plugNull/master/lang/en.json",
+    "portuguese": "https://rawgit.com/Eklipz/plugNull/master/lang/pt-BR.json",
+    "french": "https://rawgit.com/Eklipz/plugNull/master/lang/fr.json",
+    "turkish": "https://rawgit.com/Eklipz/plugNull/master/lang/tr.json",
+    "serbian": "https://rawgit.com/Eklipz/plugNull/master/lang/sr.json",
+    "chinese": "https://rawgit.com/Eklipz/plugNull/master/lang/zh-TW.json",
+    "dutch": "https://rawgit.com/Eklipz/plugNull/master/lang/nl.json",
+    "latvian": "https://rawgit.com/Eklipz/plugNull/master/lang/lv-LV.json",
+    "german": "https://rawgit.com/Eklipz/plugNull/master/lang/de.json",
+    "spanish": "https://rawgit.com/Eklipz/plugNull/master/lang/es-ES.json",
+    "czech": "https://rawgit.com/Eklipz/plugNull/master/lang/cs.json",
+    "malay": "https://rawgit.com/Eklipz/plugNull/master/lang/ms.json",
+    "polish": "https://rawgit.com/Eklipz/plugNull/master/lang/pl.json"
 }
