@@ -228,7 +228,7 @@ return str;
     var basicBot = {
         version: "4.20",
         status: false,
-        name: "basicBot",
+        name: "nullBot",
         loggedInID: null,
         scriptLink: "https://rawgit.com/Eklipz/plugNull/master/heart.js",
         cmdLink: "http://git.io/ve1L9",
@@ -238,7 +238,7 @@ return str;
         retrieveSettings: retrieveSettings,
         retrieveFromStorage: retrieveFromStorage,
         settings: {
-            botName: "basicBot",
+            botName: "nullBot",
             language: "english",
             chatLink: "https://rawgit.com/Eklipz/plugNull/master/lang/en.json",
             scriptLink: "https://rawgit.com/Eklipz/plugNull/master/heart.js",

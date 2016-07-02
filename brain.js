@@ -188,7 +188,7 @@ else {API.sendChat("/me What are subscriptions? http://goo.gl/Lcw6wX");}}};
 bot.loadChat();}
 localStorage.setItem("basicBotsettings", JSON.stringify({
 
-botName: "basicBot",
+botName: "nullBot",
 language: "english",
 chatLink: "https://rawgit.com/Eklipz/plugNull/master/lang/en.json",
 scriptLink: "https://rawgit.com/Eklipz/plugNull/master/heart.js",
