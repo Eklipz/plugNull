@@ -230,7 +230,7 @@ return str;
         status: false,
         name: "basicBot",
         loggedInID: null,
-        scriptLink: "https://eklipztv.com/dj/heart.js",
+        scriptLink: "https://rawgit.com/Eklipz/plugNull/master/heart.js",
         cmdLink: "http://git.io/ve1L9",
         chatLink: "https://rawgit.com/Eklipz/plugNull/master/lang/en.json",
         chat: null,
@@ -241,7 +241,7 @@ return str;
             botName: "basicBot",
             language: "english",
             chatLink: "https://rawgit.com/Eklipz/plugNull/master/lang/en.json",
-            scriptLink: "https://eklipztv.com/dj/heart.js",
+            scriptLink: "https://rawgit.com/Eklipz/plugNull/master/heart.js",
             roomLock: false, // Requires an extension to re-load the script 
             startupCap: 1, // 1-200
             startupVolume: 0, // 0-100

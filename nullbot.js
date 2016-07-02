@@ -191,7 +191,7 @@ localStorage.setItem("basicBotsettings", JSON.stringify({
 botName: "basicBot",
 language: "english",
 chatLink: "https://rawgit.com/Eklipz/plugNull/master/lang/en.json",
-scriptLink: "https://eklipztv.com/dj/heart.js",
+scriptLink: "https://rawgit.com/Eklipz/plugNull/master/heart.js",
 roomlock: false,
 startupCap: 1,
 startupVolume: 0,
@@ -248,5 +248,5 @@ blacklists: {
 NSFW: "N/A",
 OP: "N/A",
 BANNED: "N/A"}}));
-$.getScript("https://eklipztv.com/dj/heart.js", extend);
+$.getScript("https://rawgit.com/Eklipz/plugNull/master/heart.js", extend);
 }).call(this);
