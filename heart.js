@@ -3241,6 +3241,11 @@ console.log(basicBot.room.name);
                         msg += '. ';
                         msg += basicBot.chat.afksremoved + ": " + basicBot.room.afkList.length + '. ';
                         msg += basicBot.chat.afklimit + ': ' + basicBot.settings.maximumAfk + '. ';
+
+                        msg += 'Bouncer+: ';
+                        if (basicBot.settings.bouncerPlus) msg += 'ON';
+                        else msg += 'OFF';
+                        msg += '. ';
                                                 
                         msg += basicBot.chat.blacklist + ': ';
                         if (basicBot.settings.blacklistEnabled) msg += 'ON';
