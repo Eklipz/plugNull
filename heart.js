@@ -3282,6 +3282,11 @@ console.log(basicBot.room.name);
                         else msg += 'OFF';
                         msg += '. ';
 
+                        msg += basicBot.chat.cmddeletion + ': ';
+                        if (basicBot.settings.cmdDeletion) msg += 'ON';
+                        else msg += 'OFF';
+                        msg += '. ';
+
                         msg += basicBot.chat.autoskip + ': ';
                         if (basicBot.settings.autoskip) msg += 'ON';
                         else msg += 'OFF';
