@@ -251,7 +251,7 @@ return str;
             smartSkip: true, 
             cmdDeletion: true,
             maximumAfk: 120,
-            afkRemoval: true,
+            afkRemoval: false,
             maximumDc: 60,
             bouncerPlus: true,
             blacklistEnabled: true,
@@ -294,7 +294,7 @@ return str;
             website: null,
             intervalMessages: [],
             messageInterval: 5,
-            songstats: true,
+            songstats: false,
             commandLiteral: "!",
             blacklists: {
                 NSFW: "https://rawgit.com/ureadmyname/basicBot-customization/master/blacklists/ExampleNSFWlist.json",

@@ -9,8 +9,7 @@ return setTimeout(extend, 1 * 1000);
 
 var autoDiscord = true;
 var autoFav = true;
-var autoQuestion = true;
-var autoRoulette = true;
+var autoRoulette = false;
 var autoRules = true;
 var bot = window.bot;
 var minute= 1000 * 60;
