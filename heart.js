@@ -3241,11 +3241,6 @@ console.log(basicBot.room.name);
                         msg += '. ';
                         msg += basicBot.chat.afksremoved + ": " + basicBot.room.afkList.length + '. ';
                         msg += basicBot.chat.afklimit + ': ' + basicBot.settings.maximumAfk + '. ';
-
-                        msg += 'Bouncer+: ';
-                        if (basicBot.settings.bouncerPlus) msg += 'ON';
-                        else msg += 'OFF';
-                        msg += '. ';
                                                 
                         msg += basicBot.chat.blacklist + ': ';
                         if (basicBot.settings.blacklistEnabled) msg += 'ON';
@@ -3282,13 +3277,13 @@ console.log(basicBot.room.name);
                         else msg += 'OFF';
                         msg += '. ';
 
-                        msg += basicBot.chat.cmddeletion + ': ';
-                        if (basicBot.settings.cmdDeletion) msg += 'ON';
+                        msg += basicBot.chat.autoskip + ': ';
+                        if (basicBot.settings.autoskip) msg += 'ON';
                         else msg += 'OFF';
                         msg += '. ';
 
-                        msg += basicBot.chat.autoskip + ': ';
-                        if (basicBot.settings.autoskip) msg += 'ON';
+                        msg += basicBot.chat.songstats + ': ';
+                        if (basicBot.settings.songstats) msg += 'ON';
                         else msg += 'OFF';
                         msg += '. ';
 
@@ -3311,7 +3306,7 @@ console.log(basicBot.room.name);
                             }
                         }
                         else {
-                            return API.sendChat(msg);
+                            return API.sendChat("/me " + msg);
                         }
                     }
                 }
