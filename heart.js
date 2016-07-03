@@ -2504,41 +2504,6 @@ console.log(basicBot.room.name);
                 }
             },
 
-            k1ttCommand: {
-                command: 'k1tt',
-                rank: 'user',
-                type: 'startsWith',
-                getK1tt: function (chat) {
-                    var kitt = Math.floor(Math.random() * basicBot.chat.k1tts.length);
-                    return basicBot.chat.k1tts[kitt];
-                },
-                functionality: function (chat, cmd) {
-                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
-                    else {
-                        var msg = chat.message;
-                        var space = msg.indexOf(' ');
-                        if (space === -1) {
-                            API.sendChat(basicBot.chat.eatk1tt);
-                            return false;
-                        }
-                        else {
-                            var name = msg.substring(space + 2);
-                            var user = basicBot.userUtilities.lookupUserName(name);
-                            if (user === false || !user.inRoom) {
-                                return API.sendChat(subChat(basicBot.chat.nouserk1tt, {name: name}));
-                            }
-                            else if (user.username === chat.un) {
-                                return API.sendChat(subChat(basicBot.chat.selfk1tt, {nameto: user.username, k1tt: this.getK1tt()}));
-                            }
-                            else {
-                                return API.sendChat(subChat(basicBot.chat.k1tt, {nameto: user.username, namefrom: chat.un, k1tt: this.getK1tt()}));
-                            }
-                        }
-                    }
-                }
-            },
-
             languageCommand: {
                 command: 'language',
                 rank: 'manager',
@@ -3268,7 +3233,7 @@ console.log(basicBot.room.name);
                     if (!basicBot.commands.executable(this.rank, chat)) return void (0);
                     else {
                         var from = chat.un;
-                        var msg = '[@' + from + '] ';
+                        var msg = '[Status] ';
 
                         msg += basicBot.chat.afkremoval + ': ';
                         if (basicBot.settings.afkRemoval) msg += 'ON';
