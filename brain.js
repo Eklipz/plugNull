@@ -241,7 +241,7 @@ youtubeLink: "N/A",
 website: "N/A",
 intervalMessages: [],
 messageInterval: 30,
-songstats: true,
+songstats: false,
 commandLiteral: "!",
 blacklists: {
 NSFW: "N/A",
