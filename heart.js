@@ -3672,6 +3672,41 @@ console.log(basicBot.room.name);
                 }
             },
 
+            weedCommand: {
+                command: 'weed',
+                rank: 'user',
+                type: 'startsWith',
+                getWeed: function (chat) {
+                    var mary = Math.floor(Math.random() * basicBot.chat.weed.length);
+                    return basicBot.chat.weed[mary];
+                },
+                functionality: function (chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
+                    else {
+                        var msg = chat.message;
+                        var space = msg.indexOf(' ');
+                        if (space === -1) {
+                            API.sendChat(basicBot.chat.eatweed);
+                            return false;
+                        }
+                        else {
+                            var name = msg.substring(space + 2);
+                            var user = basicBot.userUtilities.lookupUserName(name);
+                            if (user === false || !user.inRoom) {
+                                return API.sendChat(subChat(basicBot.chat.nouserweed, {name: name}));
+                            }
+                            else if (user.username === chat.un) {
+                                return API.sendChat(subChat(basicBot.chat.selfweed, {name: name}));
+                            }
+                            else {
+                                return API.sendChat(subChat(basicBot.chat.weed, {nameto: user.username, namefrom: chat.un, weed: this.getWeed()}));
+                            }
+                        }
+                    }
+                }
+            },
+
             welcomeCommand: {
                 command: 'welcome',
                 rank: 'mod',
