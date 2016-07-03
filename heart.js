@@ -441,6 +441,8 @@ return str;
                     var match = basicBot.room.users[i].username.trim() == name.trim();
                     if (match) {
                         return basicBot.room.users[i];
+                    } else if (match === "N8te:peace_symbol:420") {
+                        return "N8te";
                     }
                 }
                 return false;
@@ -3213,7 +3215,7 @@ console.log(basicBot.room.name);
 
             sourceCommand: {
                 command: 'source',
-                rank: 'user',
+                rank: 'bouncer',
                 type: 'exact',
                 functionality: function (chat, cmd) {
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
