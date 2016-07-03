@@ -3677,8 +3677,8 @@ console.log(basicBot.room.name);
                 rank: 'user',
                 type: 'startsWith',
                 getWeed: function (chat) {
-                    var mary = Math.floor(Math.random() * basicBot.chat.weed.length);
-                    return basicBot.chat.weed[mary];
+                    var sho = Math.floor(Math.random() * basicBot.chat.weed.length);
+                    return basicBot.chat.weed[sho];
                 },
                 functionality: function (chat, cmd) {
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
