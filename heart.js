@@ -226,7 +226,7 @@ return str;
     var botCreatorIDs = ["3851534", "4105209"];
 
     var basicBot = {
-        version: "4.20.RPSLS.01",
+        version: "4.20.RPSLS.02",
         status: false,
         name: "nullBot",
         loggedInID: null,
@@ -3073,19 +3073,19 @@ console.log(basicBot.room.name);
                             var botChoice = choices[Math.floor(Math.random()*choices.length)];
                             var userChoice = msg.substring(space + 1);
                             if (botChoice == userChoice) {
-                                return API.sendChat(subChat("/me chose [" + botChoice + ". " + basicBot.chat.rpsdraw, {name: chat.un}));
+                                return API.sendChat(subChat("/me chose " + botChoice + ". " + basicBot.chat.rpsdraw, {name: chat.un}));
                             } else if (botChoice == "rock" && userChoice == "paper") {
-                                return API.sendChat(subChat("/me chose [" + botChoice + ". " + basicBot.chat.rpswin, {name: chat.un}));
+                                return API.sendChat(subChat("/me chose " + botChoice + ". " + basicBot.chat.rpswin, {name: chat.un}));
                             } else if (botChoice == "rock" && userChoice == "scissors") {
-                                return API.sendChat(subChat("/me chose [" + botChoice + ". " + basicBot.chat.rpslose, {name: chat.un}));
+                                return API.sendChat(subChat("/me chose " + botChoice + ". " + basicBot.chat.rpslose, {name: chat.un}));
                             } else if (botChoice == "paper" && userChoice == "rock") {
-                                return API.sendChat(subChat("/me chose [" + botChoice + ". " + basicBot.chat.rpslose, {name: chat.un}));
+                                return API.sendChat(subChat("/me chose " + botChoice + ". " + basicBot.chat.rpslose, {name: chat.un}));
                             } else if (botChoice == "paper" && userChoice == "scissors") {
-                                return API.sendChat(subChat("/me chose [" + botChoice + ". " + basicBot.chat.rpswin, {name: chat.un}));
+                                return API.sendChat(subChat("/me chose " + botChoice + ". " + basicBot.chat.rpswin, {name: chat.un}));
                             } else if (botChoice == "scissors" && userChoice == "rock") {
-                                return API.sendChat(subChat("/me chose [" + botChoice + ". " + basicBot.chat.rpswin, {name: chat.un}));
+                                return API.sendChat(subChat("/me chose " + botChoice + ". " + basicBot.chat.rpswin, {name: chat.un}));
                             } else if (botChoice == "scissors" && userChoice == "paper") {
-                                return API.sendChat(subChat("/me chose [" + botChoice + ". " + basicBot.chat.rpslose, {name: chat.un}));
+                                return API.sendChat(subChat("/me chose " + botChoice + ". " + basicBot.chat.rpslose, {name: chat.un}));
                             } 
                             else {
                                 return API.sendChat(subChat(basicBot.chat.rpserror, {botchoice: botChoice, userchoice: userChoice}));
@@ -3114,67 +3114,67 @@ console.log(basicBot.room.name);
                             var botChoice = choices[Math.floor(Math.random()*choices.length)];
                             var userChoice = msg.substring(space + 1);
                             if (botChoice == userChoice) {
-                                return API.sendChat(subChat("/me chose [" + botChoice + ". " + basicBot.chat.rpslsdraw, {name: chat.un}));
+                                return API.sendChat(subChat("/me chose " + botChoice + ". " + basicBot.chat.rpslsdraw, {name: chat.un}));
                             
                             } else if (botChoice == "rock" && userChoice == "paper") {
-                                return API.sendChat(subChat("/me chose [" + botChoice + ". " + basicBot.chat.rpslswin, {name: chat.un}));
+                                return API.sendChat(subChat("/me chose " + botChoice + ". " + basicBot.chat.rpslswin, {name: chat.un}));
                             
                             } else if (botChoice == "rock" && userChoice == "scissors") {
-                                return API.sendChat(subChat("/me chose [" + botChoice + ". " + basicBot.chat.rpslslose, {name: chat.un}));
+                                return API.sendChat(subChat("/me chose " + botChoice + ". " + basicBot.chat.rpslslose, {name: chat.un}));
                             
                             } else if (botChoice == "rock" && userChoice == "lizard") {
-                                return API.sendChat(subChat("/me chose [" + botChoice + ". " + basicBot.chat.rpslslose, {name: chat.un}));
+                                return API.sendChat(subChat("/me chose " + botChoice + ". " + basicBot.chat.rpslslose, {name: chat.un}));
                             
                             } else if (botChoice == "rock" && userChoice == "spock") {
-                                return API.sendChat(subChat("/me chose [" + botChoice + ". " + basicBot.chat.rpslswin, {name: chat.un}));
+                                return API.sendChat(subChat("/me chose " + botChoice + ". " + basicBot.chat.rpslswin, {name: chat.un}));
                             
                             } else if (botChoice == "paper" && userChoice == "rock") {
-                                return API.sendChat(subChat("/me chose [" + botChoice + ". " + basicBot.chat.rpslslose, {name: chat.un}));
+                                return API.sendChat(subChat("/me chose " + botChoice + ". " + basicBot.chat.rpslslose, {name: chat.un}));
                             
                             } else if (botChoice == "paper" && userChoice == "scissors") {
-                                return API.sendChat(subChat("/me chose [" + botChoice + ". " + basicBot.chat.rpslswin, {name: chat.un}));
+                                return API.sendChat(subChat("/me chose " + botChoice + ". " + basicBot.chat.rpslswin, {name: chat.un}));
                             
                             } else if (botChoice == "paper" && userChoice == "lizard") {
-                                return API.sendChat(subChat("/me chose [" + botChoice + ". " + basicBot.chat.rpslswin, {name: chat.un}));
+                                return API.sendChat(subChat("/me chose " + botChoice + ". " + basicBot.chat.rpslswin, {name: chat.un}));
                             
                             } else if (botChoice == "paper" && userChoice == "spock") {
-                                return API.sendChat(subChat("/me chose [" + botChoice + ". " + basicBot.chat.rpslslose, {name: chat.un}));
+                                return API.sendChat(subChat("/me chose " + botChoice + ". " + basicBot.chat.rpslslose, {name: chat.un}));
                             
                             } else if (botChoice == "scissors" && userChoice == "rock") {
-                                return API.sendChat(subChat("/me chose [" + botChoice + ". " + basicBot.chat.rpslswin, {name: chat.un}));
+                                return API.sendChat(subChat("/me chose " + botChoice + ". " + basicBot.chat.rpslswin, {name: chat.un}));
                             
                             } else if (botChoice == "scissors" && userChoice == "paper") {
-                                return API.sendChat(subChat("/me chose [" + botChoice + ". " + basicBot.chat.rpslslose, {name: chat.un}));
+                                return API.sendChat(subChat("/me chose " + botChoice + ". " + basicBot.chat.rpslslose, {name: chat.un}));
                             
                             } else if (botChoice == "scissors" && userChoice == "lizard") {
-                                return API.sendChat(subChat("/me chose [" + botChoice + ". " + basicBot.chat.rpslslose, {name: chat.un}));
+                                return API.sendChat(subChat("/me chose " + botChoice + ". " + basicBot.chat.rpslslose, {name: chat.un}));
                             
                             } else if (botChoice == "scissors" && userChoice == "spock") {
-                                return API.sendChat(subChat("/me chose [" + botChoice + ". " + basicBot.chat.rpslswin, {name: chat.un}));
+                                return API.sendChat(subChat("/me chose " + botChoice + ". " + basicBot.chat.rpslswin, {name: chat.un}));
                             
                             } else if (botChoice == "lizard" && userChoice == "rock") {
-                                return API.sendChat(subChat("/me chose [" + botChoice + ". " + basicBot.chat.rpslswin, {name: chat.un}));
+                                return API.sendChat(subChat("/me chose " + botChoice + ". " + basicBot.chat.rpslswin, {name: chat.un}));
                             
                             } else if (botChoice == "lizard" && userChoice == "paper") {
-                                return API.sendChat(subChat("/me chose [" + botChoice + ". " + basicBot.chat.rpslslose, {name: chat.un}));
+                                return API.sendChat(subChat("/me chose " + botChoice + ". " + basicBot.chat.rpslslose, {name: chat.un}));
                             
                             } else if (botChoice == "lizard" && userChoice == "scissors") {
-                                return API.sendChat(subChat("/me chose [" + botChoice + ". " + basicBot.chat.rpslslose, {name: chat.un}));
+                                return API.sendChat(subChat("/me chose " + botChoice + ". " + basicBot.chat.rpslslose, {name: chat.un}));
                             
                             } else if (botChoice == "lizard" && userChoice == "spock") {
-                                return API.sendChat(subChat("/me chose [" + botChoice + ". " + basicBot.chat.rpslslose, {name: chat.un}));
+                                return API.sendChat(subChat("/me chose " + botChoice + ". " + basicBot.chat.rpslslose, {name: chat.un}));
                             
                             } else if (botChoice == "spock" && userChoice == "rock") {
-                                return API.sendChat(subChat("/me chose [" + botChoice + ". " + basicBot.chat.rpslslose, {name: chat.un}));
+                                return API.sendChat(subChat("/me chose " + botChoice + ". " + basicBot.chat.rpslslose, {name: chat.un}));
                             
                             } else if (botChoice == "spock" && userChoice == "paper") {
-                                return API.sendChat(subChat("/me chose [" + botChoice + ". " + basicBot.chat.rpslswin, {name: chat.un}));
+                                return API.sendChat(subChat("/me chose " + botChoice + ". " + basicBot.chat.rpslswin, {name: chat.un}));
                             
                             } else if (botChoice == "spock" && userChoice == "scissors") {
-                                return API.sendChat(subChat("/me chose [" + botChoice + ". " + basicBot.chat.rpslslose, {name: chat.un}));
+                                return API.sendChat(subChat("/me chose " + botChoice + ". " + basicBot.chat.rpslslose, {name: chat.un}));
                             
                             } else if (botChoice == "spock" && userChoice == "lizard") {
-                                return API.sendChat(subChat("/me chose [" + botChoice + ". " + basicBot.chat.rpslswin, {name: chat.un}));
+                                return API.sendChat(subChat("/me chose " + botChoice + ". " + basicBot.chat.rpslswin, {name: chat.un}));
                             
                             } else {
                                 return API.sendChat(subChat(basicBot.chat.rpserror, {botchoice: botChoice, userchoice: userChoice}));
