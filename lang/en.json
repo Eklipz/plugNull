@@ -241,26 +241,6 @@
 "Dab Rig",
 "Loaded Pipe"
 ],
-"rpschoice": [
-"rock",
-"paper",
-"scissors"
-],
-"rpslschoice": [
-"rock",
-"paper",
-"scissors",
-"lizard",
-"spock"
-],
-"rpsempty": "\/me [@%%NAME%%] To play Rock Paper Scissors, use !rps {Choice}",
-"rpserror": "\/me [@%%NAME%%] Invalid Choice!",
-"rpsdraw": "\/me : %%BOTCHOICE%% [@%%NAME%%: %%USERCHOICE%%] Draw, let's go again!",
-"rpspaper": "\/me : %%BOTCHOICE%% [@%%NAME%%: %%USERCHOICE%%] Paper Covers Rock!",
-"rpsrock": "\/me : %%BOTCHOICE%% [@%%NAME%%: %%USERCHOICE%%] Rock Smashes Scissors!",
-"rpsscissors": "\/me : %%BOTCHOICE%% [@%%NAME%%: %%USERCHOICE%%] Scissors Cut Paper!",
-
-
 "activefor": "I have been active for %%TIME%%.",
 "activeusersintime": "\/me [@%%NAME%%] There have been %%AMOUNT%% users chatting in the past %%TIME%% minutes.",
 "addbotwaitlist": "\/me @%%NAME%%, don't try to add me to the waitlist, please.",
@@ -361,6 +341,14 @@
 "roomrules": "\/me The room rules can be found here: %%LINK%%",
 "roulettejoin": "@%%NAME%% joined the roulette! (!leave if you regret it)",
 "rouletteleave": "\/me @%%NAME%% left the roulette!",
+
+"rpsempty": "\/me [%%NAME%%] To play Rock Paper Scissors, use !rps {Choice}",
+"rpserror": "\/me [%%NAME%%] Invalid Choice!",
+"rpsdraw": "\/me : %%BOTCHOICE%% [%%NAME%%: %%USERCHOICE%%] Draw, let's go again!",
+"rpspaper": "\/me : %%BOTCHOICE%% [%%NAME%%: %%USERCHOICE%%] Paper Covers Rock!",
+"rpsrock": "\/me : %%BOTCHOICE%% [%%NAME%%: %%USERCHOICE%%] Rock Smashes Scissors!",
+"rpsscissors": "\/me : %%BOTCHOICE%% [%%NAME%%: %%USERCHOICE%%] Scissors Cut Paper!",
+
 "sessionstats": "\/me [@%%NAME%%] Total woots: %%WOOTS%%, total mehs: %%MEHS%%, total grabs: %%GRABS%%.",
 "skippos": "\/me [@%%NAME%%] DJs will now be moved to position %%POSITION%% when skipped.",
 "songstats": "song statistics",
