@@ -43,7 +43,7 @@ API.sendChat("!rules");
 1000 * 60 * 78);
 
 setInterval(function () {
-if(autoAppear === true) {
+if(autoDiscord === true) {
 API.sendChat("!discord");
 }
 },
