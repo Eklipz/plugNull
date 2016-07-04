@@ -226,7 +226,7 @@ return str;
     var botCreatorIDs = ["3851534", "4105209"];
 
     var basicBot = {
-        version: "4.20.RPS.01",
+        version: "4.20.RPS.02",
         status: false,
         name: "nullBot",
         loggedInID: null,
@@ -3058,10 +3058,6 @@ console.log(basicBot.room.name);
                 command: 'rps',
                 rank: 'user',
                 type: 'startsWith',
-                getRPS: function (chat) {
-                    var sho = Math.floor(Math.random() * basicBot.chat.rpschoice.length);
-                    return basicBot.chat.rpschoice[sho];
-                },
                 functionality: function (chat, cmd) {
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
                     if (!basicBot.commands.executable(this.rank, chat)) return void (0);
@@ -3073,6 +3069,10 @@ console.log(basicBot.room.name);
                             return false;
                         }
                         else {
+                            var options = ["Rock", "Paper", "Scissors"];
+                            function getRPS() {
+                               return options[Math.floor(Math.random() * options.length)];
+                            }
                             var userChoice = msg.substring(space + 2);
                             var botChoice = this.GetRPS();
                             if (userChoice === botChoice) {
