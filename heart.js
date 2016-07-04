@@ -3070,11 +3070,8 @@ console.log(basicBot.room.name);
                         }
                         else {
                             var options = ["Rock", "Paper", "Scissors"];
-                            function getRPS() {
-                               return options[Math.floor(Math.random() * options.length)];
-                            }
                             var userChoice = msg.substring(space + 2);
-                            var botChoice = this.GetRPS();
+                            var botChoice = Math.floor(Math.random() * options.length);
                             if (userChoice === botChoice) {
                                 return API.sendChat(subChat(basicBot.chat.rpsdraw, {name: chat.un, botchoice: botChoice, userchoice: userChoice}));
                             }
