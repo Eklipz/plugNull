@@ -226,7 +226,7 @@ return str;
     var botCreatorIDs = ["3851534", "4105209"];
 
     var basicBot = {
-        version: "4.20.RPS.08",
+        version: "4.20.RPS.09",
         status: false,
         name: "nullBot",
         loggedInID: null,
@@ -3069,9 +3069,11 @@ console.log(basicBot.room.name);
                             return false;
                         }
                         else {
-                            return API.sendChat(subChat(basicBot.chat.rpstest1));
+                            var choices = ["rock", "paper", "scissors"];
+                            var botChoice = choices[Math.floor(Math.random()*choices.length)];
+                            return API.sendChat(subChat(basicBot.chat.rpstest1, {random: botChoice}));
                             /*
-                            var botChoice = ["rock", "paper", "scissors"];
+                            
                             var userChoice = msg.substring(space + 2);
                             var botChoice = botChoice[Math.floor(Math.random() * botChoice.length)];
                             if (userChoice == botChoice) {
