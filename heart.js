@@ -3074,7 +3074,19 @@ console.log(basicBot.room.name);
                             var userChoice = msg.substring(space + 1);
                             if (botChoice == userChoice) {
                                 return API.sendChat(subChat(basicBot.chat.rpsdraw, {name: chat.un, botchoice: botChoice, userchoice: userChoice}));
-                            }
+                            } else if (botChoice == "rock" && userChoice == "paper") {
+                                return API.sendChat(subChat(basicBot.chat.rpspaper, {name: chat.un, botchoice: botChoice, userchoice: userChoice}));
+                            } else if (botChoice == "rock" && userChoice == "scissors") {
+                                return API.sendChat(subChat(basicBot.chat.rpsrock, {name: chat.un, botchoice: botChoice, userchoice: userChoice}));
+                            } else if (botChoice == "paper" && userChoice == "rock") {
+                                return API.sendChat(subChat(basicBot.chat.rpspaper, {name: chat.un, botchoice: botChoice, userchoice: userChoice}));
+                            } else if (botChoice == "paper" && userChoice == "scissors") {
+                                return API.sendChat(subChat(basicBot.chat.rpsscissors, {name: chat.un, botchoice: botChoice, userchoice: userChoice}));
+                            } else if (botChoice == "scissors" && userChoice == "rock") {
+                                return API.sendChat(subChat(basicBot.chat.rpsrock, {name: chat.un, botchoice: botChoice, userchoice: userChoice}));
+                            } else if (botChoice == "scissors" && userChoice == "paper") {
+                                return API.sendChat(subChat(basicBot.chat.rpsscissors, {name: chat.un, botchoice: botChoice, userchoice: userChoice}));
+                            } 
                             else {
                                 return API.sendChat(subChat(basicBot.chat.rpstest2, {botchoice: botChoice, userchoice: userChoice}));
                             }
