@@ -3072,7 +3072,7 @@ console.log(basicBot.room.name);
                             var choices = ["rock", "paper", "scissors"];
                             var botChoice = choices[Math.floor(Math.random()*choices.length)];
                             var userChoice = msg.substring(space + 2);
-                            return API.sendChat(subChat(basicBot.chat.rpstest1, {botchoice: botChoice, userchoice: userChoice}));
+                            return API.sendChat(subChat(basicBot.chat.rpstest2, {botchoice: botChoice, userchoice: userChoice}));
                             /*
                             
                             var userChoice = msg.substring(space + 2);

@@ -344,7 +344,7 @@
 
 "rpsempty": "\/me To play Rock Paper Scissors, use !rps {Choice}",
 "rpserror": "\/me Invalid Choice! Input= %%USERCHOICE%%",
-"rpstest1": "\/me Works to this point? Maybe? Let's see: You chose %%USERCHOICE%% and I chose %%BOTCHOICE%%",
+"rpstest2": "\/me Works to this point? Maybe? Let's see: You chose %%USERCHOICE%% and I chose %%BOTCHOICE%%",
 "rpsdraw": "\/me : %%BOTCHOICE%% [%%NAME%%: %%USERCHOICE%%] Draw, let's go again!",
 "rpspaper": "\/me : %%BOTCHOICE%% [%%NAME%%: %%USERCHOICE%%] Paper Covers Rock!",
 "rpsrock": "\/me : %%BOTCHOICE%% [%%NAME%%: %%USERCHOICE%%] Rock Smashes Scissors!",
