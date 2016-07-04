@@ -226,7 +226,7 @@ return str;
     var botCreatorIDs = ["3851534", "4105209"];
 
     var basicBot = {
-        version: "4.20.RPS.09",
+        version: "4.20.RPS.10",
         status: false,
         name: "nullBot",
         loggedInID: null,
@@ -3071,7 +3071,8 @@ console.log(basicBot.room.name);
                         else {
                             var choices = ["rock", "paper", "scissors"];
                             var botChoice = choices[Math.floor(Math.random()*choices.length)];
-                            return API.sendChat(subChat(basicBot.chat.rpstest1, {random: botChoice}));
+                            var userChoice = msg.substring(space + 2);
+                            return API.sendChat(subChat(basicBot.chat.rpstest1, {botchoice: botChoice, userchoice: userChoice}));
                             /*
                             
                             var userChoice = msg.substring(space + 2);
