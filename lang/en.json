@@ -343,7 +343,7 @@
 "rouletteleave": "\/me @%%NAME%% left the roulette!",
 
 "rpsempty": "\/me To play Rock Paper Scissors, use !rps {Choice}",
-"rpserror": "\/me Invalid Choice!",
+"rpserror": "\/me Invalid Choice! Input= %%USERCHOICE%%",
 "rpsdraw": "\/me : %%BOTCHOICE%% [%%NAME%%: %%USERCHOICE%%] Draw, let's go again!",
 "rpspaper": "\/me : %%BOTCHOICE%% [%%NAME%%: %%USERCHOICE%%] Paper Covers Rock!",
 "rpsrock": "\/me : %%BOTCHOICE%% [%%NAME%%: %%USERCHOICE%%] Rock Smashes Scissors!",

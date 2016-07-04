@@ -226,7 +226,7 @@ return str;
     var botCreatorIDs = ["3851534", "4105209"];
 
     var basicBot = {
-        version: "4.20.RPS.06",
+        version: "4.20.RPS.07",
         status: false,
         name: "nullBot",
         loggedInID: null,
@@ -3094,7 +3094,7 @@ console.log(basicBot.room.name);
                                 return API.sendChat(subChat(basicBot.chat.rpsscissors, {name: chat.un, botchoice: botChoice, userchoice: userChoice}));
                             }
                             else {
-                                return API.sendChat(subChat(basicBot.chat.rpserror));
+                                return API.sendChat(subChat(basicBot.chat.rpserror, {name: chat.un, botchoice: botChoice, userchoice: userChoice}));
                             }
                         }
                     }
