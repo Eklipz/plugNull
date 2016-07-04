@@ -3054,6 +3054,56 @@ console.log(basicBot.room.name);
                 }
             },
 
+            rpsCommand: {
+                command: 'rps',
+                rank: 'user',
+                type: 'startsWith',
+                getRPSChoice: function (chat) {
+                    var sho = Math.floor(Math.random() * basicBot.chat.rpschoice.length);
+                    return basicBot.chat.rpschoice[sho];
+                },
+                functionality: function (chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
+                    else {
+                        var msg = chat.message;
+                        var space = msg.indexOf(' ');
+                        if (space === -1) {
+                            API.sendChat(basicBot.chat.rpsempty, {name: chat.un});
+                            return false;
+                        }
+                        else {
+                            var userChoice = msg.substring(space + 2);
+                            var botChoice = this.GetRPSChoice();
+                            if (userChoice === botChoice) {
+                                return API.sendChat(subChat(basicBot.chat.rpsdraw, {name: name, botchoice: botChoice, userchoice: userChoice}));
+                            }
+                            else if (userChoice === "Rock" & botChoice === "Paper") {
+                                return API.sendChat(subChat(basicBot.chat.rpspaper, {name: name, botchoice: botChoice, userchoice: userChoice}));
+                            }
+                            else if (userChoice === "Rock" & botChoice === "Scissors") {
+                                return API.sendChat(subChat(basicBot.chat.rpsrock, {name: name, botchoice: botChoice, userchoice: userChoice}));
+                            }
+                            else if (userChoice === "Paper" & botChoice === "Rock") {
+                                return API.sendChat(subChat(basicBot.chat.rpspaper, {name: name, botchoice: botChoice, userchoice: userChoice}));
+                            }
+                            else if (userChoice === "Paper" & botChoice === "Scissors") {
+                                return API.sendChat(subChat(basicBot.chat.rpsscissors, {name: name, botchoice: botChoice, userchoice: userChoice}));
+                            }
+                            else if (userChoice === "Scissors" & botChoice === "Rock") {
+                                return API.sendChat(subChat(basicBot.chat.rpsrock, {name: name, botchoice: botChoice, userchoice: userChoice}));
+                            }
+                            else if (userChoice === "Scissors" & botChoice === "Paper") {
+                                return API.sendChat(subChat(basicBot.chat.rpsscissors, {name: name, botchoice: botChoice, userchoice: userChoice}));
+                            }
+                            else {
+                                return API.sendChat(subChat(basicBot.chat.rpserror));
+                            }
+                        }
+                    }
+                }
+            },
+
             rulesCommand: {
                 command: 'rules',
                 rank: 'user',
