@@ -3072,25 +3072,25 @@ console.log(basicBot.room.name);
                             var options = ["Rock", "Paper", "Scissors"];
                             var userChoice = msg.substring(space + 2);
                             var botChoice = Math.floor(Math.random() * options.length);
-                            if (userChoice === botChoice) {
+                            if (userChoice == botChoice) {
                                 return API.sendChat(subChat(basicBot.chat.rpsdraw, {name: chat.un, botchoice: botChoice, userchoice: userChoice}));
                             }
-                            else if (userChoice === options[0] && botChoice === options[1]) {
+                            else if (userChoice == options[0] && botChoice == options[1]) {
                                 return API.sendChat(subChat(basicBot.chat.rpspaper, {name: chat.un, botchoice: botChoice, userchoice: userChoice}));
                             }
-                            else if (userChoice === options[0] && botChoice === options[2]) {
+                            else if (userChoice == options[0] && botChoice == options[2]) {
                                 return API.sendChat(subChat(basicBot.chat.rpsrock, {name: chat.un, botchoice: botChoice, userchoice: userChoice}));
                             }
-                            else if (userChoice === options[1] && botChoice === options[0]) {
+                            else if (userChoice == options[1] && botChoice == options[0]) {
                                 return API.sendChat(subChat(basicBot.chat.rpspaper, {name: chat.un, botchoice: botChoice, userchoice: userChoice}));
                             }
-                            else if (userChoice === options[1] && botChoice === options[2]) {
+                            else if (userChoice == options[1] && botChoice == options[2]) {
                                 return API.sendChat(subChat(basicBot.chat.rpsscissors, {name: chat.un, botchoice: botChoice, userchoice: userChoice}));
                             }
-                            else if (userChoice === options[2] && botChoice === options[0]) {
+                            else if (userChoice == options[2] && botChoice == options[0]) {
                                 return API.sendChat(subChat(basicBot.chat.rpsrock, {name: chat.un, botchoice: botChoice, userchoice: userChoice}));
                             }
-                            else if (userChoice === options[2] && botChoice === options[1]) {
+                            else if (userChoice == options[2] && botChoice == options[1]) {
                                 return API.sendChat(subChat(basicBot.chat.rpsscissors, {name: chat.un, botchoice: botChoice, userchoice: userChoice}));
                             }
                             else {
