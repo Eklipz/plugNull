@@ -226,7 +226,7 @@ return str;
     var botCreatorIDs = ["3851534", "4105209"];
 
     var basicBot = {
-        version: "4.20.RPS.10",
+        version: "4.20.RPS.11",
         status: false,
         name: "nullBot",
         loggedInID: null,
@@ -282,7 +282,7 @@ return str;
             afkRankCheck: "ambassador",
             motdEnabled: false,
             motdInterval: 5,
-            motd: "MOTD",
+            motd: "Temporary Message of the Day",
             filterChat: true,
             etaRestriction: false,
             welcome: true,
@@ -3069,13 +3069,8 @@ console.log(basicBot.room.name);
                             return false;
                         }
                         else {
-                            var choices = ["rock", "paper", "scissors"];
-                            var botChoice = choices[Math.floor(Math.random()*choices.length)];
-                            var userChoice = msg.substring(space + 2);
-                            return API.sendChat(subChat(basicBot.chat.rpstest2, {botchoice: botChoice, userchoice: userChoice}));
-                            /*
                             
-                            var userChoice = msg.substring(space + 2);
+                            var userChoice = msg.substring(space + 1);
                             var botChoice = botChoice[Math.floor(Math.random() * botChoice.length)];
                             if (userChoice == botChoice) {
                                 return API.sendChat(subChat(basicBot.chat.rpsdraw, {name: chat.un, botchoice: botChoice, userchoice: userChoice}));
@@ -3100,7 +3095,7 @@ console.log(basicBot.room.name);
                             }
                             else {
                                 return API.sendChat(subChat(basicBot.chat.rpserror, {name: chat.un, botchoice: botChoice, userchoice: userChoice}));
-                            }*/
+                            }
                         }
                     }
                 }
