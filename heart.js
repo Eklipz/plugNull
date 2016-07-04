@@ -3058,7 +3058,7 @@ console.log(basicBot.room.name);
                 command: 'rps',
                 rank: 'user',
                 type: 'startsWith',
-                getRPSChoice: function (chat) {
+                getRPS: function (chat) {
                     var sho = Math.floor(Math.random() * basicBot.chat.rpschoice.length);
                     return basicBot.chat.rpschoice[sho];
                 },
@@ -3074,7 +3074,7 @@ console.log(basicBot.room.name);
                         }
                         else {
                             var userChoice = msg.substring(space + 2);
-                            var botChoice = this.GetRPSChoice();
+                            var botChoice = this.GetRPS();
                             if (userChoice === botChoice) {
                                 return API.sendChat(subChat(basicBot.chat.rpsdraw, {name: chat.un, botchoice: botChoice, userchoice: userChoice}));
                             }
