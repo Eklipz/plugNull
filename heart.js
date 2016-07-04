@@ -226,7 +226,7 @@ return str;
     var botCreatorIDs = ["3851534", "4105209"];
 
     var basicBot = {
-        version: "4.20.RPS.13",
+        version: "4.20.RPS.14",
         status: false,
         name: "nullBot",
         loggedInID: null,
@@ -1158,8 +1158,8 @@ return API.moderateForceSkip();
                     return true;
                 }
                 if (basicBot.settings.cmdDeletion && msg.startsWith(basicBot.settings.commandLiteral)) {
-        API.moderateDeleteChat(chat.cid);
-        } 
+                    API.moderateDeleteChat(chat.cid);
+                } 
                 /**
                  var plugRoomLinkPatt = /(\bhttps?:\/\/(www.)?plug\.dj[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
                  if (plugRoomLinkPatt.exec(msg)) {
@@ -3088,7 +3088,7 @@ console.log(basicBot.room.name);
                                 return API.sendChat(subChat(basicBot.chat.rpsscissors, {name: chat.un, botchoice: botChoice, userchoice: userChoice}));
                             } 
                             else {
-                                return API.sendChat(subChat(basicBot.chat.rpstest2, {botchoice: botChoice, userchoice: userChoice}));
+                                return API.sendChat(subChat(basicBot.chat.rpserror, {botchoice: botChoice, userchoice: userChoice}));
                             }
                             /*
                             
