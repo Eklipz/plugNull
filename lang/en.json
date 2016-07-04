@@ -345,10 +345,10 @@
 "rpsempty": "\/me To play Rock Paper Scissors, use !rps {Choice}",
 "rpserror": "\/me Invalid Choice, try again!",
 "rpsdebug": "\/me Works to this point? Maybe? Let's see: You chose %%USERCHOICE%% and I chose %%BOTCHOICE%%",
-"rpsdraw": "\/me : [%%BOTCHOICE%%] Draw, let's go again!",
-"rpspaper": "\/me : [%%BOTCHOICE%%] Paper Covers Rock %%NAME%%!",
-"rpsrock": "\/me : [%%BOTCHOICE%%] Rock Smashes Scissors %%NAME%%!",
-"rpsscissors": "\/me : [%%BOTCHOICE%%] Scissors Cut Paper %%NAME%%!",
+
+"rpswin": "You win %%NAME%%!",
+"rpslose": "You lose %%NAME%%!",
+"rpsdraw": "It's a Draw %%NAME%%!",
 
 "sessionstats": "\/me [@%%NAME%%] Total woots: %%WOOTS%%, total mehs: %%MEHS%%, total grabs: %%GRABS%%.",
 "skippos": "\/me [@%%NAME%%] DJs will now be moved to position %%POSITION%% when skipped.",
