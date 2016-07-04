@@ -226,7 +226,7 @@ return str;
     var botCreatorIDs = ["3851534", "4105209"];
 
     var basicBot = {
-        version: "4.20.RPSLS.03",
+        version: "4.20.RPSLS.02",
         status: false,
         name: "nullBot",
         loggedInID: null,
