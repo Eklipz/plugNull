@@ -226,7 +226,7 @@ return str;
     var botCreatorIDs = ["3851534", "4105209"];
 
     var basicBot = {
-        version: "4.20.RPSLS.02",
+        version: "4.20",
         status: false,
         name: "nullBot",
         loggedInID: null,
@@ -3054,49 +3054,8 @@ console.log(basicBot.room.name);
                 }
             },
 
-            rpsCommand: {
-                command: 'rps',
-                rank: 'user',
-                type: 'startsWith',
-                functionality: function (chat, cmd) {
-                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
-                    else {
-                        var msg = chat.message;
-                        var space = msg.indexOf(' ');
-                        if (space === -1) {
-                            API.sendChat(basicBot.chat.rpsempty);
-                            return false;
-                        }
-                        else {
-                            var choices = ["Rock", "Paper", "Scissors"];
-                            var botChoice = choices[Math.floor(Math.random()*choices.length)];
-                            var userChoice = msg.substring(space + 1);
-                            if (botChoice == userChoice) {
-                                return API.sendChat(subChat("/me chose " + botChoice + ". " + basicBot.chat.rpsdraw, {name: chat.un}));
-                            } else if (botChoice == "rock" && userChoice == "paper") {
-                                return API.sendChat(subChat("/me chose " + botChoice + ". " + basicBot.chat.rpswin, {name: chat.un}));
-                            } else if (botChoice == "rock" && userChoice == "scissors") {
-                                return API.sendChat(subChat("/me chose " + botChoice + ". " + basicBot.chat.rpslose, {name: chat.un}));
-                            } else if (botChoice == "paper" && userChoice == "rock") {
-                                return API.sendChat(subChat("/me chose " + botChoice + ". " + basicBot.chat.rpslose, {name: chat.un}));
-                            } else if (botChoice == "paper" && userChoice == "scissors") {
-                                return API.sendChat(subChat("/me chose " + botChoice + ". " + basicBot.chat.rpswin, {name: chat.un}));
-                            } else if (botChoice == "scissors" && userChoice == "rock") {
-                                return API.sendChat(subChat("/me chose " + botChoice + ". " + basicBot.chat.rpswin, {name: chat.un}));
-                            } else if (botChoice == "scissors" && userChoice == "paper") {
-                                return API.sendChat(subChat("/me chose " + botChoice + ". " + basicBot.chat.rpslose, {name: chat.un}));
-                            } 
-                            else {
-                                return API.sendChat(subChat(basicBot.chat.rpserror, {botchoice: botChoice, userchoice: userChoice}));
-                            }
-                        }
-                    }
-                }
-            },
-
             rpslsCommand: {
-                command: 'rpsls',
+                command: ['rps', 'rpsls'],
                 rank: 'user',
                 type: 'startsWith',
                 functionality: function (chat, cmd) {
