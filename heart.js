@@ -3077,7 +3077,8 @@ console.log(basicBot.room.name);
                             }
                             else {
                                 return API.sendChat(subChat(basicBot.chat.rpstest2, {botchoice: botChoice, userchoice: userChoice}));
-                            }/*
+                            }
+                            /*
                             
                             var userChoice = msg.substring(space + 2);
                             var botChoice = botChoice[Math.floor(Math.random() * botChoice.length)];
