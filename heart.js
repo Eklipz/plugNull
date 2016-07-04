@@ -297,9 +297,9 @@ return str;
             songstats: false,
             commandLiteral: "!",
             blacklists: {
-                NSFW: "https://rawgit.com/ureadmyname/basicBot-customization/master/blacklists/ExampleNSFWlist.json",
-                OP: "https://rawgit.com/ureadmyname/basicBot-customization/master/blacklists/ExampleOPlist.json",
-                BANNED: "https://rawgit.com/Yemasthui/basicBot-customization/master/blacklists/BANNEDlist.json"
+                NSFW: "https://rawgit.com/ureadmyname/basicBot-customization/master/ExampleNSFWlist.json",
+                OP: "https://rawgit.com/ureadmyname/basicBot-customization/master/ExampleOPlist.json",
+                BANNED: "https://rawgit.com/ureadmyname/basicBot-customization/master/ExampleBANNEDlist.json"
             }
         },
         room: {
