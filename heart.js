@@ -226,7 +226,7 @@ return str;
     var botCreatorIDs = ["3851534", "4105209"];
 
     var basicBot = {
-        version: "4.20.RPS.05",
+        version: "4.20.RPS.06",
         status: false,
         name: "nullBot",
         loggedInID: null,
@@ -3069,28 +3069,28 @@ console.log(basicBot.room.name);
                             return false;
                         }
                         else {
-                            var options = ["rock", "paper", "scissors"];
+                            var botChoice = ["rock", "paper", "scissors"];
                             var userChoice = msg.substring(space + 2);
-                            var botChoice = Math.floor(Math.random() * options.length);
+                            var botChoice = botChoice[Math.floor(Math.random() * botChoice.length)];
                             if (userChoice == botChoice) {
                                 return API.sendChat(subChat(basicBot.chat.rpsdraw, {name: chat.un, botchoice: botChoice, userchoice: userChoice}));
                             }
-                            else if (userChoice == "rock" & botChoice == "paper") {
+                            else if (userChoice == "rock" && botChoice == "paper") {
                                 return API.sendChat(subChat(basicBot.chat.rpspaper, {name: chat.un, botchoice: botChoice, userchoice: userChoice}));
                             }
-                            else if (userChoice == "rock" & botChoice == "scissors") {
+                            else if (userChoice == "rock" && botChoice == "scissors") {
                                 return API.sendChat(subChat(basicBot.chat.rpsrock, {name: chat.un, botchoice: botChoice, userchoice: userChoice}));
                             }
-                            else if (userChoice == "paper" & botChoice == "rock") {
+                            else if (userChoice == "paper" && botChoice == "rock") {
                                 return API.sendChat(subChat(basicBot.chat.rpspaper, {name: chat.un, botchoice: botChoice, userchoice: userChoice}));
                             }
-                            else if (userChoice == "paper" & botChoice == "scissors") {
+                            else if (userChoice == "paper" && botChoice == "scissors") {
                                 return API.sendChat(subChat(basicBot.chat.rpsscissors, {name: chat.un, botchoice: botChoice, userchoice: userChoice}));
                             }
-                            else if (userChoice == "scissors" & botChoice == "rock") {
+                            else if (userChoice == "scissors" && botChoice == "rock") {
                                 return API.sendChat(subChat(basicBot.chat.rpsrock, {name: chat.un, botchoice: botChoice, userchoice: userChoice}));
                             }
-                            else if (userChoice == "scissors" & botChoice == "paper") {
+                            else if (userChoice == "scissors" && botChoice == "paper") {
                                 return API.sendChat(subChat(basicBot.chat.rpsscissors, {name: chat.un, botchoice: botChoice, userchoice: userChoice}));
                             }
                             else {
