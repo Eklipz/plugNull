@@ -1419,7 +1419,7 @@ console.log(basicBot.room.name);
                         var msg = chat.message;
                         var space = msg.indexOf(' ');
                         if (space === -1) {
-                            API.sendChat(basicBot.chat.rpslsempty);
+                            API.sendChat(subChat(basicBot.chat.rpslsempty));
                             return false;
                         }
                         else {
@@ -1490,7 +1490,7 @@ console.log(basicBot.room.name);
                                 return API.sendChat(subChat("/me chose " + botChoice + ". " + basicBot.chat.rpslswin, {name: chat.un}));
                             
                             } else {
-                                return API.sendChat(subChat(basicBot.chat.rpserror, {botchoice: botChoice, userchoice: userChoice}));
+                                return API.sendChat(basicBot.chat.rpserror, {botchoice: botChoice, userchoice: userChoice});
                             }
                         }
                     }
