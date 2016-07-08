@@ -223,7 +223,7 @@ return str;
 
 
     var basicBot = {
-        version: "1.03",
+        version: "1.04",
         status: false,
         name: "nullBot",
         loggedInID: null,
@@ -244,8 +244,7 @@ return str;
             startupEmoji: false, // true or false
             autowoot: true,
             autoskip: false, 
-            smartSkip: true, 
-            cmdDeletion: true,
+            smartSkip: true,
             maximumAfk: 120,
             afkRemoval: false,
             maximumDc: 60,
@@ -1132,64 +1131,6 @@ return API.moderateForceSkip();
                 var msg = chat.message;
                 var perm = basicBot.userUtilities.getPermission(chat.uid);
                 var user = basicBot.userUtilities.lookupUser(chat.uid);
-                var isMuted = false;
-                for (var i = 0; i < basicBot.room.mutedUsers.length; i++) {
-                    if (basicBot.room.mutedUsers[i] === chat.uid) isMuted = true;
-                }
-                if (isMuted) {
-                    API.moderateDeleteChat(chat.cid);
-                    return true;
-                }
-                if (basicBot.settings.lockdownEnabled) {
-                    if (perm === 0) {
-                        API.moderateDeleteChat(chat.cid);
-                        return true;
-                    }
-                }
-                if (basicBot.chatcleaner(chat)) {
-                    API.moderateDeleteChat(chat.cid);
-                    return true;
-                }
-                if (basicBot.settings.cmdDeletion && msg.startsWith(basicBot.settings.commandLiteral)) {
-                    API.moderateDeleteChat(chat.cid);
-                } 
-                /**
-                 var plugRoomLinkPatt = /(\bhttps?:\/\/(www.)?plug\.dj[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
-                 if (plugRoomLinkPatt.exec(msg)) {
-                    if (perm === 0) {
-                        API.sendChat(subChat(basicBot.chat.roomadvertising, {name: chat.un}));
-                        API.moderateDeleteChat(chat.cid);
-                        return true;
-                    }
-                }
-                 **/
-                if (msg.indexOf('http://adf.ly/') > -1) {
-                    API.moderateDeleteChat(chat.cid);
-                    API.sendChat(subChat(basicBot.chat.adfly, {name: chat.un}));
-                    return true;
-                }
-                if (msg.indexOf('autojoin was not enabled') > 0 || msg.indexOf('AFK message was not enabled') > 0 || msg.indexOf('!afkdisable') > 0 || msg.indexOf('!joindisable') > 0 || msg.indexOf('autojoin disabled') > 0 || msg.indexOf('AFK message disabled') > 0) {
-                    API.moderateDeleteChat(chat.cid);
-                    return true;
-                }
-
-                var rlJoinChat = basicBot.chat.roulettejoin;
-                var rlLeaveChat = basicBot.chat.rouletteleave;
-
-                var joinedroulette = rlJoinChat.split('%%NAME%%');
-                if (joinedroulette[1].length > joinedroulette[0].length) joinedroulette = joinedroulette[1];
-                else joinedroulette = joinedroulette[0];
-
-                var leftroulette = rlLeaveChat.split('%%NAME%%');
-                if (leftroulette[1].length > leftroulette[0].length) leftroulette = leftroulette[1];
-                else leftroulette = leftroulette[0];
-
-                if ((msg.indexOf(joinedroulette) > -1 || msg.indexOf(leftroulette) > -1) && chat.uid === basicBot.loggedInID) {
-                    setTimeout(function (id) {
-                        API.moderateDeleteChat(id);
-                    }, 5 * 1000, chat.cid);
-                    return true;
-                }
                 return false;
             },
             commandCheck: function (chat) {
@@ -1203,21 +1144,6 @@ return API.moderateForceSkip();
                 }
                 else return false;
                 var userPerm = basicBot.userUtilities.getPermission(chat.uid);
-                //console.log("name: " + chat.un + ", perm: " + userPerm);
-                if (chat.message !== basicBot.settings.commandLiteral + 'join' && chat.message !== basicBot.settings.commandLiteral + "leave") {
-                    if (userPerm === 0 && !basicBot.room.usercommand) return void (0);
-                    if (!basicBot.room.allcommand) return void (0);
-                }
-                if (chat.message === basicBot.settings.commandLiteral + 'eta' && basicBot.settings.etaRestriction) {
-                    if (userPerm < 2) {
-                        var u = basicBot.userUtilities.lookupUser(chat.uid);
-                        if (u.lastEta !== null && (Date.now() - u.lastEta) < 1 * 60 * 60 * 1000) {
-                            API.moderateDeleteChat(chat.cid);
-                            return void (0);
-                        }
-                        else u.lastEta = Date.now();
-                    }
-                }
                 var executed = false;
 
                 for (var comm in basicBot.commands) {
@@ -1241,13 +1167,7 @@ return API.moderateForceSkip();
                     }, basicBot.settings.commandCooldown * 1000);
                 }
                 if (executed) {
-                    /*if (basicBot.settings.cmdDeletion) {
-                        API.moderateDeleteChat(chat.cid);
-                    }*/
-                    //basicBot.room.allcommand = false;
-                    //setTimeout(function () {
                         basicBot.room.allcommand = true;
-                    //}, 5 * 1000);
                 }
                 return executed;
             },
@@ -1325,12 +1245,6 @@ return API.moderateForceSkip();
             };
             var u = API.getUser();
             basicBot.connectAPI();
-            API.moderateDeleteChat = function (cid) {
-                $.ajax({
-                    url: "https://plug.dj/_/chat/" + cid,
-                    type: "DELETE"
-                })
-            };
 
             basicBot.room.name = window.location.pathname
             var Check;
