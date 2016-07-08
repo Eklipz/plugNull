@@ -331,6 +331,7 @@
 "nouserspecified": "\/me [@%%NAME%%] No user specified.",
 "novaliduserspecified": "\/me [@%%NAME%%] No valid user specified.",
 "online": "\/me %%BOTNAME%% v%%VERSION%% online!",
+"online2": "\/me lights the bong!",
 "oplist": "\/me OP list: %%LINK%%",
 "permissionownsong": "\/me :up: @%%NAME%% has permission to play their own production!",
 "pong": "\/me Pong!",

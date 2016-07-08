@@ -222,7 +222,7 @@ return str;
 
 
     var basicBot = {
-        version: "1.06",
+        version: "1.07",
         status: false,
         name: "nullBot",
         loggedInID: null,
@@ -326,31 +326,6 @@ return str;
             queue: {
                 id: [],
                 position: []
-            },
-            roulette: {
-                rouletteStatus: false,
-                participants: [],
-                countdown: null,
-                startRoulette: function () {
-                    basicBot.room.roulette.rouletteStatus = true;
-                    basicBot.room.roulette.countdown = setTimeout(function () {
-                        basicBot.room.roulette.endRoulette();
-                    }, 60 * 1000);
-                    API.sendChat(basicBot.chat.isopen);
-                },
-                endRoulette: function () {
-                    basicBot.room.roulette.rouletteStatus = false;
-                    var ind = Math.floor(Math.random() * basicBot.room.roulette.participants.length);
-                    var winner = basicBot.room.roulette.participants[ind];
-                    basicBot.room.roulette.participants = [];
-                    var pos = (API.getWaitList().length - API.getWaitList().length + 1);
-                    var user = basicBot.userUtilities.lookupUser(winner);
-                    var name = user.username;
-                    API.sendChat(subChat(basicBot.chat.winnerpicked, {name: name, position: pos}));
-                    setTimeout(function (winner, pos) {
-                        basicBot.userUtilities.moveUser(winner, pos, false);
-                    }, 1 * 1000, winner, pos);
-                }
             }
         },
         User: function (id, name) {
@@ -1241,7 +1216,7 @@ console.log(basicBot.room.name);
             API.chatLog('Avatars capped at ' + basicBot.settings.startupCap);
             API.chatLog('Volume set to ' + basicBot.settings.startupVolume);
             socket(); 
-            loadChat(API.sendChat(subChat(basicBot.chat.online, {botname: basicBot.settings.botName, version: basicBot.version})));
+            loadChat(API.sendChat(subChat(basicBot.chat.online2)));
         },
         commands: {
             executable: function (minRank, chat) {
