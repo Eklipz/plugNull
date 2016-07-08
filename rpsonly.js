@@ -562,9 +562,6 @@ console.log(basicBot.room.name);
                     console.log("Killing bot after room change.");
                     storeToStorage();
                     basicBot.disconnectAPI();
-                    setTimeout(function () {
-                        kill();
-                    }, 1000);
                     if (basicBot.settings.roomLock){ 
                         window.location = 'https://plug.dj' + basicBot.room.name; 
                     }
