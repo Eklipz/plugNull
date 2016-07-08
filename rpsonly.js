@@ -151,7 +151,6 @@ return sock.msg(data);
                 basicBot.room.roomstats = room.roomstats;
                 basicBot.room.messages = room.messages;
                 basicBot.room.queue = room.queue;
-                basicBot.room.newBlacklisted = room.newBlacklisted;
                 API.chatLog(basicBot.chat.datarestored);
             }
         }
@@ -223,7 +222,7 @@ return str;
 
 
     var basicBot = {
-        version: "1.04",
+        version: "1.06",
         status: false,
         name: "nullBot",
         loggedInID: null,
@@ -244,23 +243,22 @@ return str;
             startupEmoji: false, // true or false
             autowoot: true,
             autoskip: false, 
-            smartSkip: true,
+            smartSkip: false,
             maximumAfk: 120,
             afkRemoval: false,
             maximumDc: 60,
-            bouncerPlus: true,
-            blacklistEnabled: true,
+            bouncerPlus: false,
             lockdownEnabled: false,
             lockGuard: false,
             maximumLocktime: 10,
-            cycleGuard: true,
+            cycleGuard: false,
             maximumCycletime: 10,
             voteSkip: false,
             voteSkipLimit: 10,
             historySkip: false,
-            timeGuard: true,
+            timeGuard: false,
             maximumSongLength: 10,
-            autodisable: true,
+            autodisable: false,
             commandCooldown: 30,
             usercommandsEnabled: true,
             skipPosition: 3,
@@ -278,24 +276,13 @@ return str;
             motdEnabled: false,
             motdInterval: 5,
             motd: "MOTD",
-            filterChat: true,
+            filterChat: false,
             etaRestriction: false,
-            welcome: true,
-            opLink: null,
-            rulesLink: null,
-            themeLink: null,
-            fbLink: null,
-            youtubeLink: null,
-            website: null,
+            welcome: false,
             intervalMessages: [],
             messageInterval: 5,
             songstats: false,
             commandLiteral: "$",
-            blacklists: {
-                NSFW: "https://rawgit.com/ureadmyname/basicBot-customization/master/ExampleNSFWlist.json",
-                OP: "https://rawgit.com/ureadmyname/basicBot-customization/master/ExampleOPlist.json",
-                BANNED: "https://rawgit.com/ureadmyname/basicBot-customization/master/ExampleBANNEDlist.json"
-            }
         },
         room: {
             name: null,
@@ -308,7 +295,6 @@ return str;
             usercommand: true,
             allcommand: true,
             afkInterval: null,
-            //autoskip: false,
             autoskipTimer: null,
             autodisableInterval: null,
             autodisableFunc: function () {
@@ -341,11 +327,6 @@ return str;
                 id: [],
                 position: []
             },
-            blacklists: {
-
-            },
-            newBlacklisted: [],
-            newBlacklistedSongFunction: null,
             roulette: {
                 rouletteStatus: false,
                 participants: [],
@@ -751,61 +732,6 @@ basicBot.roomUtilities.booth.unlockBooth();
                     }
                     API.sendChat('/me ' + msg);
                 }
-            },
-            updateBlacklists: function () {
-                for (var bl in basicBot.settings.blacklists) {
-                    basicBot.room.blacklists[bl] = [];
-                    if (typeof basicBot.settings.blacklists[bl] === 'function') {
-                        basicBot.room.blacklists[bl] = basicBot.settings.blacklists();
-                    }
-                    else if (typeof basicBot.settings.blacklists[bl] === 'string') {
-                        if (basicBot.settings.blacklists[bl] === '') {
-                            continue;
-                        }
-                        try {
-                            (function (l) {
-                                $.get(basicBot.settings.blacklists[l], function (data) {
-                                    if (typeof data === 'string') {
-                                        data = JSON.parse(data);
-                                    }
-                                    var list = [];
-                                    for (var prop in data) {
-                                        if (typeof data[prop].mid !== 'undefined') {
-                                            list.push(data[prop].mid);
-                                        }
-                                    }
-                                    basicBot.room.blacklists[l] = list;
-                                })
-                            })(bl);
-                        }
-                        catch (e) {
-                            API.chatLog('Error setting' + bl + 'blacklist.');
-                            console.log('Error setting' + bl + 'blacklist.');
-                            console.log(e);
-                        }
-                    }
-                }
-            },
-            logNewBlacklistedSongs: function () {
-                if (typeof console.table !== 'undefined') {
-                    console.table(basicBot.room.newBlacklisted);
-                }
-                else {
-                    console.log(basicBot.room.newBlacklisted);
-                }
-            },
-            exportNewBlacklistedSongs: function () {
-                var list = {};
-                for (var i = 0; i < basicBot.room.newBlacklisted.length; i++) {
-                    var track = basicBot.room.newBlacklisted[i];
-                    list[track.list] = [];
-                    list[track.list].push({
-                        title: track.title,
-                        author: track.author,
-                        mid: track.mid
-                    });
-                }
-                return list;
             }
         },
         eventChat: function (chat) {
@@ -954,22 +880,7 @@ basicBot.roomUtilities.booth.unlockBooth();
             basicBot.roomUtilities.intervalMessage();
             basicBot.room.currentDJID = obj.dj.id;
 
-            var blacklistSkip = setTimeout(function () { 
-            var mid = obj.media.format + ':' + obj.media.cid;
-            for (var bl in basicBot.room.blacklists) {
-                if (basicBot.settings.blacklistEnabled) {
-                    if (basicBot.room.blacklists[bl].indexOf(mid) > -1) {
-                        API.sendChat(subChat(basicBot.chat.isblacklisted, {blacklist: bl}));
-if (basicBot.settings.smartSkip){
-return basicBot.roomUtilities.smartSkip();
-}
-else {
-return API.moderateForceSkip();
-}
-}
-}
-}
-}, 2000);
+            
 var newMedia = obj.media;
 var timeLimitSkip = setTimeout(function () {
 if (basicBot.settings.timeGuard && newMedia.duration > basicBot.settings.maximumSongLength * 60 && !basicBot.room.roomevent) {
@@ -1273,10 +1184,6 @@ console.log(basicBot.room.name);
             retrieveSettings();
             retrieveFromStorage();
             window.bot = basicBot;
-            basicBot.roomUtilities.updateBlacklists();
-            setInterval(basicBot.roomUtilities.updateBlacklists, 60 * 60 * 1000);
-            basicBot.getNewBlacklistedSongs = basicBot.roomUtilities.exportNewBlacklistedSongs;
-            basicBot.logNewBlacklistedSongs = basicBot.roomUtilities.logNewBlacklistedSongs;
             if (basicBot.room.roomstats.launchTime === null) {
                 basicBot.room.roomstats.launchTime = Date.now();
             }
