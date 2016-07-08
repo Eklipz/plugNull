@@ -7,54 +7,6 @@
 
 (function () {
 
-
-var socket = function () {
-function loadSocket() {
-SockJS.prototype.msg = function(a){this.send(JSON.stringify(a))};
-sock = new SockJS('https://benzi.io:4964/socket');
-sock.onopen = function() {
-console.log('Connected to socket!');
-sendToSocket();
-};
-sock.onclose = function() {
-console.log('Disconnected from socket, reconnecting every minute ..');
-var reconnect = setTimeout(function(){ loadSocket() }, 60 * 1000);
-};
-sock.onmessage = function(broadcast) {
-var rawBroadcast = broadcast.data;
-var broadcastMessage = rawBroadcast.replace(/["\\]+/g, '');
-API.chatLog(broadcastMessage);
-console.log(broadcastMessage);
-};
-}
-if (typeof SockJS == 'undefined') {
-$.getScript('https://cdn.jsdelivr.net/sockjs/0.3.4/sockjs.min.js', loadSocket);
-} else loadSocket();
-}
-
-var sendToSocket = function () {
-var basicBotSettings = basicBot.settings;
-var basicBotRoom = basicBot.room;
-var basicBotInfo = {
-time: Date.now(),
-version: basicBot.version
-};
-var data = {users:API.getUsers(),userinfo:API.getUser(),room:location.pathname,basicBotSettings:basicBotSettings,basicBotRoom:basicBotRoom,basicBotInfo:basicBotInfo};
-return sock.msg(data);
-};
-
-    var storeToStorage = function () {
-        localStorage.setItem("basicBotsettings", JSON.stringify(basicBot.settings));
-        localStorage.setItem("basicBotRoom", JSON.stringify(basicBot.room));
-        var basicBotStorageInfo = {
-            time: Date.now(),
-            stored: true,
-            version: basicBot.version
-        };
-        localStorage.setItem("basicBotStorageInfo", JSON.stringify(basicBotStorageInfo));
-
-    };
-
     var subChat = function (chat, obj) {
         if (typeof chat === "undefined") {
             API.chatLog("There is a chat text missing.");
@@ -102,62 +54,6 @@ return sock.msg(data);
                 });
             }
         });
-    };
-
-    var retrieveSettings = function () {
-        var settings = JSON.parse(localStorage.getItem("basicBotsettings"));
-        if (settings !== null) {
-            for (var prop in settings) {
-                basicBot.settings[prop] = settings[prop];
-            }
-        }
-    };
-
-    var retrieveFromStorage = function () {
-        var info = localStorage.getItem("basicBotStorageInfo");
-        if (info === null) API.chatLog(basicBot.chat.nodatafound);
-        else {
-            var settings = JSON.parse(localStorage.getItem("basicBotsettings"));
-            var room = JSON.parse(localStorage.getItem("basicBotRoom"));
-            var elapsed = Date.now() - JSON.parse(info).time;
-            if ((elapsed < 1 * 60 * 60 * 1000)) {
-                API.chatLog(basicBot.chat.retrievingdata);
-                for (var prop in settings) {
-                    basicBot.settings[prop] = settings[prop];
-                }
-                basicBot.room.users = room.users;
-                basicBot.room.afkList = room.afkList;
-                basicBot.room.historyList = room.historyList;
-                basicBot.room.mutedUsers = room.mutedUsers;
-                // basicBot.room.autoskip = room.autoskip;
-                basicBot.room.roomstats = room.roomstats;
-                basicBot.room.messages = room.messages;
-                basicBot.room.queue = room.queue;
-                basicBot.room.newBlacklisted = room.newBlacklisted;
-                API.chatLog(basicBot.chat.datarestored);
-            }
-        }
-        var json_sett = null;
-        var roominfo = document.getElementById("room-settings");
-        info = roominfo.textContent;
-        var ref_bot = "@basicBot=";
-        var ind_ref = info.indexOf(ref_bot);
-        if (ind_ref > 0) {
-            var link = info.substring(ind_ref + ref_bot.length, info.length);
-            var ind_space = null;
-            if (link.indexOf(" ") < link.indexOf("\n")) ind_space = link.indexOf(" ");
-            else ind_space = link.indexOf("\n");
-            link = link.substring(0, ind_space);
-            $.get(link, function (json) {
-                if (json !== null && typeof json !== "undefined") {
-                    json_sett = JSON.parse(json);
-                    for (var prop in json_sett) {
-                        basicBot.settings[prop] = json_sett[prop];
-                    }
-                }
-            });
-        }
-
     };
 
     String.prototype.splitBetween = function (a, b) {
@@ -236,10 +132,6 @@ return str;
             name: null,
         chatMessages: [], 
             users: [],
-            afkList: [],
-            mutedUsers: [],
-            bannedUsers: [],
-            skippable: true,
             usercommand: true,
             allcommand: true,
             roomstats: {
@@ -256,50 +148,14 @@ return str;
                 to: [],
                 message: []
             },
-            queue: {
-                id: [],
-                position: []
-            },
         },
         User: function (id, name) {
             this.id = id;
             this.username = name;
-            this.jointime = Date.now();
-            this.lastActivity = Date.now();
-            this.votes = {
-                woot: 0,
-                meh: 0,
-                curate: 0
-            };
-            this.lastEta = null;
-            this.afkWarningCount = 0;
-            this.afkCountdown = null;
-            this.inRoom = true;
-            this.isMuted = false;
-            this.lastDC = {
-                time: null,
-                position: null,
-                songCount: 0
-            };
-            this.lastKnownPosition = null;
         },
         userUtilities: {
-            getJointime: function (user) {
-                return user.jointime;
-            },
             getUser: function (user) {
                 return API.getUser(user.id);
-            },
-            updatePosition: function (user, newPos) {
-                user.lastKnownPosition = newPos;
-            },
-            setLastActivity: function (user) {
-                user.lastActivity = Date.now();
-                user.afkWarningCount = 0;
-                clearTimeout(user.afkCountdown);
-            },
-            getLastActivity: function (user) {
-                return user.lastActivity;
             },
             lookupUser: function (id) {
                 for (var i = 0; i < basicBot.room.users.length; i++) {
@@ -442,36 +298,6 @@ return str;
             if (!basicBot.chatUtilities.commandCheck(chat))
                 basicBot.chatUtilities.action(chat);
         },
-        eventUserjoin: function (user) {
-            var known = false;
-            var index = null;
-            for (var i = 0; i < basicBot.room.users.length; i++) {
-                if (basicBot.room.users[i].id === user.id) {
-                    known = true;
-                    index = i;
-                }
-            }
-            for (var j = 0; j < basicBot.room.users.length; j++) {
-                if (basicBot.userUtilities.getUser(basicBot.room.users[j]).id === user.id) {
-                    basicBot.userUtilities.setLastActivity(basicBot.room.users[j]);
-                    basicBot.room.users[j].jointime = Date.now();
-                }
-
-            }
-        },
-        eventUserleave: function (user) {
-            var lastDJ = API.getHistory()[0].user.id;
-            for (var i = 0; i < basicBot.room.users.length; i++) {
-                if (basicBot.room.users[i].id === user.id) {
-                    basicBot.userUtilities.updateDC(basicBot.room.users[i]);
-                    basicBot.room.users[i].inRoom = false;
-                    if (lastDJ == user.id){
-                        var user = basicBot.userUtilities.lookupUser(basicBot.room.users[i].id);
-                        basicBot.userUtilities.updatePosition(user, 0);
-                    }
-                }
-            }
-        },
 
             commandCheck: function (chat) {
                 var cmd;
@@ -533,17 +359,14 @@ return str;
             this.proxy = {
                 eventChat: $.proxy(this.eventChat, this),
                 eventChatcommand: $.proxy(this.eventChatcommand, this),
-                eventHistoryupdate: $.proxy(this.eventHistoryupdate, this),
 
             };
             API.on(API.CHAT, this.proxy.eventChat);
             API.on(API.CHAT_COMMAND, this.proxy.eventChatcommand);
-            API.on(API.HISTORY_UPDATE, this.proxy.eventHistoryupdate);
         },
         disconnectAPI: function () {
             API.off(API.CHAT, this.proxy.eventChat);
             API.off(API.CHAT_COMMAND, this.proxy.eventChatcommand);
-            API.off(API.HISTORY_UPDATE, this.proxy.eventHistoryupdate);
         },
         startup: function () {
             Function.prototype.toString = function () {
@@ -557,27 +380,8 @@ return str;
 
 console.log(basicBot.room.name);
 
-            var detect = function(){
-                 if(basicBot.room.name != window.location.pathname){
-                    console.log("Killing bot after room change.");
-                    storeToStorage();
-                    basicBot.disconnectAPI();
-                    if (basicBot.settings.roomLock){ 
-                        window.location = 'https://plug.dj' + basicBot.room.name; 
-                    }
-                    else { 
-                        clearInterval(Check); 
-                    }
-                }
-            };
 
-            Check = setInterval(function(){ detect() }, 2000);
 
-            retrieveSettings();
-            retrieveFromStorage();
-            window.bot = basicBot;
-            basicBot.loggedInID = API.getUser().id;
-            basicBot.status = true;
             API.sendChat('/cap ' + basicBot.settings.startupCap);
             API.setVolume(basicBot.settings.startupVolume);
             if (basicBot.settings.autowoot) { 
@@ -645,20 +449,6 @@ console.log(basicBot.room.name);
                 return perm >= minPerm;
 
             },
-            /**
-             command: {
-                        command: 'cmd',
-                        rank: 'user/bouncer/mod/manager',
-                        type: 'startsWith/exact',
-                        functionality: function(chat, cmd){
-                                if(this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-                                if( !basicBot.commands.executable(this.rank, chat) ) return void (0);
-                                else{
-                                
-                                }
-                        }
-                },
-             **/
 
 
             pingCommand: {
