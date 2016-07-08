@@ -221,17 +221,13 @@ temp = null;
 return str;
 }; 
 
-    var botCreator = "Matthew (Yemasthui)";
-    var botMaintainer = "Benzi"
-    var botCreatorIDs = ["3851534", "4105209"];
 
     var basicBot = {
-        version: "1.02",
+        version: "1.03",
         status: false,
         name: "nullBot",
         loggedInID: null,
         scriptLink: "https://rawgit.com/Eklipz/plugNull/master/heart.js",
-        cmdLink: "https://git.io/vKvpm",
         chatLink: "https://rawgit.com/Eklipz/plugNull/master/lang/en.json",
         chat: null,
         loadChat: loadChat,
@@ -295,7 +291,7 @@ return str;
             intervalMessages: [],
             messageInterval: 5,
             songstats: false,
-            commandLiteral: "!",
+            commandLiteral: "$",
             blacklists: {
                 NSFW: "https://rawgit.com/ureadmyname/basicBot-customization/master/ExampleNSFWlist.json",
                 OP: "https://rawgit.com/ureadmyname/basicBot-customization/master/ExampleOPlist.json",
@@ -457,9 +453,6 @@ return str;
                 var u;
                 if (typeof obj === "object") u = obj;
                 else u = API.getUser(obj);
-                for (var i = 0; i < botCreatorIDs.length; i++) {
-                    if (botCreatorIDs[i].indexOf(u.id) > -1) return 10;
-                }
                 if (u.gRole < 2) return u.role;
                 else {
                     switch (u.gRole) {
@@ -1331,8 +1324,6 @@ return API.moderateForceSkip();
                 return 'Function.'
             };
             var u = API.getUser();
-            if (basicBot.userUtilities.getPermission(u) < 2) return API.chatLog(basicBot.chat.greyuser);
-            if (basicBot.userUtilities.getPermission(u) === 2) API.chatLog(basicBot.chat.bouncer);
             basicBot.connectAPI();
             API.moderateDeleteChat = function (cid) {
                 $.ajax({
