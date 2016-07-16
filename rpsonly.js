@@ -1216,7 +1216,7 @@ console.log(basicBot.room.name);
             API.chatLog('Avatars capped at ' + basicBot.settings.startupCap);
             API.chatLog('Volume set to ' + basicBot.settings.startupVolume);
             socket(); 
-            loadChat(API.sendChat(subChat(basicBot.chat.online2)));
+            //loadChat(API.sendChat(subChat(basicBot.chat.online2)));
         },
         commands: {
             executable: function (minRank, chat) {
@@ -1289,7 +1289,7 @@ console.log(basicBot.room.name);
                     }
                 }
             },
-            
+
             weedCommand: {
                 command: 'weed',
                 rank: 'user',
